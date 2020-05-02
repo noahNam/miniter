@@ -9,8 +9,8 @@ db = {
     'database': 'miniter'
 }
 
-db_url = f"mysql+mysqlconnector://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['database']}?charset=utf8"
-db = create_engine(db_url, encoding='utf-8', max_overflow=0)
+DB_URL = f"mysql+mysqlconnector://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['database']}?charset=utf8"
+db = create_engine(DB_URL, encoding='utf-8', max_overflow=0)
 
 params = {'name': '남기혁'}
 rows = db.execute(text("select * from users where name = :name"), params).fetchall()
