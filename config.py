@@ -10,11 +10,7 @@ db = {
 }
 
 DB_URL = f"mysql+mysqlconnector://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['database']}?charset=utf8"
-db = create_engine(DB_URL, encoding='utf-8', max_overflow=0)
+JWT_SECRET_KEY = 'SOME_SUPER_SECRET_KEY'
+JWT_EXP_DELTA_SECONDS = 7 * 24 * 60 * 60
 
-params = {'name': '남기혁'}
-rows = db.execute(text("select * from users where name = :name"), params).fetchall()
 
-for row in rows:
-    print(f"name : {row['name']}")
-    print(f"email : {row['email']}")
