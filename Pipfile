@@ -12,6 +12,7 @@ bcrypt = "*"
 sqlalchemy = "*"
 flask-cors = "*"
 pytest = "*"
+mysql-connector-python = "*"
 
 [requires]
 python_version = "3.8"

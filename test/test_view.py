@@ -1,9 +1,9 @@
-import config
 import pytest
 import bcrypt
 import json
+import config
 
-# app.py파일에서 create_app 함수를 임포트 한다.
+# app.py 파일에서 create_app 함수를 임포트 한다.
 from app import create_app
 from sqlalchemy import create_engine, text
 
@@ -13,6 +13,7 @@ database = create_engine(config.test_config['DB_URL'], encoding='utf-8', max_ove
 @pytest.fixture
 def api():
     """
+     'fixture' 란 테스팅을 하는데 있어서 필요한 부분들을 혹은 조건들을 미리 준비해놓은 리소스 혹은 코드들 이라고 보면 된다.
      def api() --> fixture 함수 이름. 동일한 이름의 인자를 해당 함수의 리턴 값으로 적용시켜 준다.
      create_app 함수를 사용해서 API 어플리케이션을 생성해 준다.
      app.config['TESTING'] --> Flask가 에러가 났을 경우 HTTP 요청 오류 부분은 핸들링 하지 않음으로써 불필요한 오류 메세지는 출력하지 않는다.
@@ -258,14 +259,14 @@ def test_unfollow(api):
     # unfollow 유저 아이디 = 2
     resp = api.post(
         '/unfollow',
-        data=json.dumps({'id':1, 'unfollow': 2}),
+        data=json.dumps({'id': 1, 'unfollow': 2}),
         content_type='application/json',
         headers={'Authorization': access_token}
     )
     assert resp.status_code == 200
 
     # 이제 유저 1의 tweet 확인 해서 유저 2의 tweet이 더 이상 리턴 되지 않는 것을 확인
-    resp   = api.get(f'/timeline/1')
+    resp = api.get(f'/timeline/1')
     tweets = json.loads(resp.data.decode('utf-8'))
 
     assert resp.status_code == 200
@@ -273,4 +274,3 @@ def test_unfollow(api):
         'user_id': 1,
         'timeline': []
     }
-
