@@ -7,6 +7,11 @@ verify_ssl = true
 
 [packages]
 flask = "*"
+pyjwt = "*"
+bcrypt = "*"
+sqlalchemy = "*"
+flask-cors = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.8"
