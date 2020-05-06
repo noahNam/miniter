@@ -1,11 +1,11 @@
 import jwt
 import bcrypt
 
-from flask      import Flask, request, jsonify, current_app, Response, g
+from flask import Flask, request, jsonify, current_app, Response, g
 from flask.json import JSONEncoder
 from sqlalchemy import create_engine, text
-from datetime   import datetime, timedelta
-from functools  import wraps
+from datetime import datetime, timedelta
+from functools import wraps
 from flask_cors import CORS
 
 
